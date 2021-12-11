@@ -1,20 +1,29 @@
 package Login;
 
 import javax.swing.*;
+
+import Main.MainDisplay_User;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * 로그인 화면 구성하는 클래스
- * @author Geongseo
+ * 로그인 화면 구성합니다. 
+ * @author Team5
  *
  */
 
 public class LoginDisplay extends JFrame {
 	
-	private JTextField Txt_input_id;		// id 입력 받는 텍스트 필드
-	private JPasswordField Txt_input_pw;	// pw 입력 받는 패스워드 필드
+	/**
+	 * id 입력 받는 텍스트 필드
+	 */
+	private JTextField Txt_input_id;		
+	/**
+	 * pw 입력 받는 패스워드 필드
+	 */
+	private JPasswordField Txt_input_pw;	
 	
 	public LoginDisplay() {
 		setSize(360, 640);
@@ -70,13 +79,31 @@ public class LoginDisplay extends JFrame {
 		getContentPane().add(Btn_Login);
 		
 		/**
-		 * 로그인 버튼 클릭시 처리.
+		 * 로그인 버튼 클릭시 로그인 처리.
 		 */
 		Btn_Login.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				String id = Txt_input_id.getText();
+				String pw = Txt_input_pw.getText();
 				
+				LoginProcess obj = new LoginProcess();
+				boolean login_success = obj.login_check(id, pw);
+				
+				/**
+				 * 로그인이 성공한 경우 다시 홈화면을 띄운다.
+				 * 실패한 경우엔 경고창을 띄운다.
+				 */
+				if(login_success) {
+					setVisible(false);
+					System.out.println("로그인 성공!");
+					new MainDisplay_User();
+				}
+				else {
+					JOptionPane errorlog = new JOptionPane();
+					JOptionPane.showMessageDialog(null, "아이디와 비밀번호를 정확하게 입력해주세요", "로그인 오류", JOptionPane.ERROR_MESSAGE);
+				}
 			}
 			
 		});
