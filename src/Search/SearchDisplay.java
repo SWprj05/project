@@ -7,7 +7,7 @@ import java.awt.event.*;
 
 /**
  * 검색 화면을 구성한 클래스
- * @author Geongseo
+ * @author Team5
  *
  */
 public class SearchDisplay extends JFrame {
