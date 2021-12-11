@@ -4,7 +4,8 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
 import javax.swing.border.*;
-
+import Login.LoginDisplay;
+import Search.*;
 
 /**
  * '푸드트럭 여기야!' 사용자 버전 메인화면 입니다.
@@ -36,8 +37,15 @@ private JTextField Txt_input_search;
 		 */
 		ImageIcon image_menubar = new ImageIcon("./Image/메뉴바.png");
 		JButton Btn_menubar = new JButton(image_menubar);
+		Btn_menubar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				new LoginDisplay();
+			};
+		});
 		Btn_menubar.setBounds(12, 10, 50, 50);
 		getContentPane().add(Btn_menubar);
+		
 		
 		/**
 		 * 장바구니 이미지가 추가된 장바구니 버튼.
@@ -54,6 +62,18 @@ private JTextField Txt_input_search;
 		JButton Btn_search = new JButton(image_search);
 		Btn_search.setBounds(12, 135, 30, 30);
 		getContentPane().add(Btn_search);
+		/**
+		 * 검색 버튼을 클릭할 경우 검색 화면으로 넘어갑니다. 
+		 */
+		Btn_search.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				setVisible(false);
+				new SearchDisplay();
+			}
+			
+		});
 		
 		/**
 		 * 검색어 입력받는 텍스트 필드.
