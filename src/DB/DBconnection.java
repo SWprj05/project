@@ -4,39 +4,37 @@ import java.io.*;
 import java.lang.*;
 import java.sql.*;
 
+
 /**
- * Oracle DB시스템과 연결.
+ * 데이터베이스에 연결합니다.
  * @author Team5
  *
  */
 public class DBconnection {
 	
-	public void connect() {
-		/**
-		 * DB와 연결할 변수들.
-		 */
-		Connection conn = null;
-		Statement stmt = null;
-		ResultSet rset = null;
-		
-		/**
-		 * DB게정(아이디, 비밀번호).
-		 */
-		String db_id = "software";
-		String db_pw = "1234";
+	final String jdbc_url = "jdbc:oracle:thin:@localhost:1521:xe";
+	final String db_id = "software";
+	final String db_password = "selab"; // DB연결 관련
+	Connection conn = null;
+	Statement stmt = null; 
+	
+	public Statement db_connect() {
 		
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver"); 
-			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", db_id, db_pw); 
-			System.out.println( "성공적으로로딩되었음" );	
-			stmt = conn.createStatement (); 
-			rset = stmt.executeQuery ("select * from foodtrucktb"); 
+			conn = DriverManager.getConnection(jdbc_url, db_id, db_password); 
+			System.out.println( "DB연결완료. " );	
+			stmt = conn.createStatement(); 
+			
 			
 		} catch( ClassNotFoundException e ) {
 			System.out.println( "해당드라이버를찾을수없습니다.\n" + e);
 		} catch( SQLException e) {
 			System.out.println( "해당드라이버를찾을수없습니다.\n" + e);
 		}
+		
+		return stmt;
 	}
-	
+
+
 }
