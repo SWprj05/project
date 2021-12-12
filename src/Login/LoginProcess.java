@@ -15,7 +15,7 @@ public class LoginProcess {
 	 * LoginDisplay에서 텍스트 필드에 입력된 id, pw값이 올바른지 검사.
 	 * @param id	텍스트 필드에 입력받은 아이디
 	 * @param pw	패스워드 필드에 입력받은 패스워드
-	 * @return true / false
+	 * @return true||false
 	 */
 	public boolean login_check(String id, String pw) {
 		
