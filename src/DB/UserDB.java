@@ -11,10 +11,10 @@ import java.sql.Statement;
  */
 
 public class UserDB {
-	DBconnection db;
+	DBConnection db;
 	
 	public UserDB() {
-		db = new DBconnection();
+		db = new DBConnection();
 		db.db_connect();
 	}
 	
