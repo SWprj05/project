@@ -59,6 +59,16 @@ public class OrderDisplay extends JFrame {
 		btn_pay.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 14));
 		btn_pay.setBounds(129, 537, 97, 30);
 		getContentPane().add(btn_pay);
+		btn_pay.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				setVisible(false);
+				new OrderComplete(select_name[0], count, total);
+			}
+			
+		});
 		
 		//title ±¸ºÐ
 		JPanel panel = new JPanel();  
@@ -110,18 +120,18 @@ public class OrderDisplay extends JFrame {
 		
 		txt_orderInfo = new JLabel("ÁÖ¹®Á¤º¸");
 		txt_orderInfo.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 17));
-		txt_orderInfo.setBounds(51, 192, 60, 15);
+		txt_orderInfo.setBounds(51, 192, 70, 15);
 		c.add(txt_orderInfo);
 		
 		
 		txt_order_money = new JLabel("ÁÖ¹® ±Ý¾×");
 		txt_order_money.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 14));
-		txt_order_money.setBounds(70, 260, 52, 21);
+		txt_order_money.setBounds(51, 260, 70, 21);
 		c.add(txt_order_money);
 		
 		tet_order_food = new JLabel("ÁÖ¹® ¸Þ´º");
 		tet_order_food.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 14));
-		tet_order_food.setBounds(70, 229, 52, 21);
+		tet_order_food.setBounds(51, 229, 70, 21);
 		c.add(tet_order_food);
 		
 		
@@ -130,14 +140,14 @@ public class OrderDisplay extends JFrame {
 		{
 			int i = count-1;
 			txt_food = new JLabel(select_name[0]+" ¿Ü "+String.valueOf(i));
-			txt_food.setFont(new Font("AppleSDGothicNeoR00", Font.PLAIN, 14));
-			txt_food.setBounds(148, 229, 126, 25);
+			txt_food.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 14));
+			txt_food.setBounds(148, 229, 170, 25);
 			c.add(txt_food);
 		}
 		else
 		{
 			txt_food = new JLabel(select_name[0]);
-			txt_food.setFont(new Font("AppleSDGothicNeoR00", Font.PLAIN, 14));
+			txt_food.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 14));
 			txt_food.setBounds(148, 229, 126, 25);
 			c.add(txt_food);
 		}
@@ -153,7 +163,7 @@ public class OrderDisplay extends JFrame {
 		
 		txt_ordersum = new JLabel("ÃÑ °áÁ¦±Ý¾×");
 		txt_ordersum.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 17));
-		txt_ordersum.setBounds(51, 378, 87, 15);
+		txt_ordersum.setBounds(51, 378, 90, 15);
 		c.add(txt_ordersum);
 
 		//ÁÖ¹® ±Ý¾× ÃÑ ÇÕ°è 
