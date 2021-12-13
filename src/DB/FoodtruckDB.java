@@ -14,7 +14,6 @@ public class FoodtruckDB {
 	DBConnection db;
 	String shop_name;
 	
-	
 	/**
 	 * 기본 생성자 
 	 */
