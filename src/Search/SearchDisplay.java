@@ -6,6 +6,7 @@ import java.awt.*;
 import java.awt.event.*;
 import DB.*;
 import javax.swing.border.LineBorder;
+import Menu.*;
 
 /**
  * 검색 화면을 구성한 클래스
@@ -63,7 +64,15 @@ public class SearchDisplay extends JFrame {
 					JButton Btn_foodtruck = new JButton(temp[0]);
 					Btn_foodtruck.setBounds(45, 10, 301, 80);
 					panel.add(Btn_foodtruck);
-					
+					Btn_foodtruck.addActionListener(new ActionListener() {
+						@Override
+						public void actionPerformed(ActionEvent e) {
+							// TODO Auto-generated method stub
+							setVisible(false);
+							new MenuDisplay(txt);
+						}
+						
+					});
 				}
 				else {
 					JOptionPane errorlog = new JOptionPane();
