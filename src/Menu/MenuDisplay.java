@@ -47,17 +47,9 @@ public class MenuDisplay extends JFrame {
 	 */
 	public MenuDisplay(String shop_name) {	
 		fd = new FoodtruckDB();
-//		int count = fd.get_shopCnt(shop_name);
-//		System.out.println(count);
-//		cb = new JLabel [count];
-//		txt_food = new JLabel [count];
-//		txt_price = new JLabel [count];
-//		Line = new JPanel [count];
 		
 		setTitle("메뉴판 화면");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//		Container c = getContentPane();
-//		c.setBackground(Color.WHITE);
 		getContentPane().setLayout(null);
 		
 		//페이지 title 받아와야 함 
