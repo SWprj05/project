@@ -65,7 +65,7 @@ public class OrderDisplay extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				setVisible(false);
-				new OrderComplete(select_name[0], count, total);
+				new PayDoneDisplay(select_name[0], count, total);
 			}
 			
 		});

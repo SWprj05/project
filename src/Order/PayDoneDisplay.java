@@ -13,10 +13,10 @@ import javax.swing.border.EtchedBorder;
  * @author HP
  *
  */
-public class OrderComplete extends JFrame{
+public class PayDoneDisplay extends JFrame{
 	private final JPanel panel = new JPanel();
 
-	public OrderComplete(String order, int count, int total) {
+	public PayDoneDisplay(String order, int count, int total) {
 		setSize(360, 640);
 		setTitle("결제완료");
 		setVisible(true);
