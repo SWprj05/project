@@ -56,7 +56,7 @@ public class OrderDisplay extends JFrame {
 		//결제하기 버튼
 		btn_pay = new JButton("결제하기");
 		btn_pay.addActionListener(new MyAction());
-		btn_pay.setFont(new Font("AppleSDGothicNeoB00", Font.PLAIN, 14));
+		btn_pay.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
 		btn_pay.setBounds(129, 537, 97, 30);
 		getContentPane().add(btn_pay);
 		
@@ -68,7 +68,7 @@ public class OrderDisplay extends JFrame {
 		txt_title = new JLabel("주문하기");
 		panel.add(txt_title);
 		txt_title.setHorizontalAlignment(SwingConstants.CENTER);
-		txt_title.setFont(new Font("AppleSDGothicNeoB00", Font.PLAIN, 18));
+		txt_title.setFont(new Font("맑은 고딕", Font.PLAIN, 18));
 		
 		// 선으로 만들어 내용 구분
 		JPanel panel_1 = new JPanel(); 
@@ -78,7 +78,7 @@ public class OrderDisplay extends JFrame {
 		
 		
 		txt_paymethod = new JLabel("결제수단");
-		txt_paymethod.setFont(new Font("AppleSDGothicNeoB00", Font.PLAIN, 17));
+		txt_paymethod.setFont(new Font("맑은 고딕", Font.PLAIN, 17));
 		txt_paymethod.setBounds(51, 77, 71, 15);
 		c.add(txt_paymethod);
 		
@@ -91,7 +91,7 @@ public class OrderDisplay extends JFrame {
 		
 		
 		txt_paymethod_card = new JLabel(" 체크/신용카드");
-		txt_paymethod_card.setFont(new Font("AppleSDGothicNeoR00", Font.PLAIN, 14));
+		txt_paymethod_card.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
 		
 		
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);  //직사각형Panel과 카드Label 그룹화
@@ -109,18 +109,18 @@ public class OrderDisplay extends JFrame {
 		
 		
 		txt_orderInfo = new JLabel("주문정보");
-		txt_orderInfo.setFont(new Font("AppleSDGothicNeoB00", Font.PLAIN, 17));
+		txt_orderInfo.setFont(new Font("맑은 고딕", Font.PLAIN, 17));
 		txt_orderInfo.setBounds(51, 192, 60, 15);
 		c.add(txt_orderInfo);
 		
 		
 		txt_order_money = new JLabel("주문 금액");
-		txt_order_money.setFont(new Font("AppleSDGothicNeoR00", Font.PLAIN, 14));
+		txt_order_money.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
 		txt_order_money.setBounds(70, 260, 52, 21);
 		c.add(txt_order_money);
 		
 		tet_order_food = new JLabel("주문 메뉴");
-		tet_order_food.setFont(new Font("AppleSDGothicNeoR00", Font.PLAIN, 14));
+		tet_order_food.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
 		tet_order_food.setBounds(70, 229, 52, 21);
 		c.add(tet_order_food);
 		
@@ -146,19 +146,19 @@ public class OrderDisplay extends JFrame {
 		
 		//메뉴 가격 넘겨받아와야 함
 		txt_money = new JLabel(String.valueOf(total)+"원"); 
-		txt_money.setFont(new Font("AppleSDGothicNeoR00", Font.PLAIN, 14));	
+		txt_money.setFont(new Font("맑은 고딕", Font.PLAIN, 14));	
 		txt_money.setBounds(148, 258, 126, 25);	
 		c.add(txt_money);
 		
 		
 		txt_ordersum = new JLabel("총 결제금액");
-		txt_ordersum.setFont(new Font("AppleSDGothicNeoB00", Font.PLAIN, 17));
+		txt_ordersum.setFont(new Font("맑은 고딕", Font.PLAIN, 17));
 		txt_ordersum.setBounds(51, 378, 87, 15);
 		c.add(txt_ordersum);
 
 		//주문 금액 총 합계 
 		txt_ordersum_money = new JLabel(String.valueOf(total)+"원"); 
-		txt_ordersum_money.setFont(new Font("AppleSDGothicNeoB00", Font.PLAIN, 17));
+		txt_ordersum_money.setFont(new Font("맑은 고딕", Font.PLAIN, 17));
 		txt_ordersum_money.setBounds(203, 373, 105, 25);
 		getContentPane().add(txt_ordersum_money);
 		
