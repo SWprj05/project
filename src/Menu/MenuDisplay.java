@@ -69,8 +69,8 @@ public class MenuDisplay extends JFrame {
 		price = fd.get_menu_price(shop_name);
 		
 		//푸드트럭 가게에 등록된 메뉴 수 리턴 
-//		menuCnt = fd.get_shopCnt(shop_name);
-		menuCnt = 4;
+		menuCnt = fd.get_shopCnt(shop_name);
+
 		//가격 total값 초기화
 		total = 0;
 		
@@ -87,12 +87,12 @@ public class MenuDisplay extends JFrame {
 			cb[i].addItemListener(listener);
 			
 			txt_food[i] = new JLabel(name[i]);
-			txt_food[i].setFont(new Font("AppleSDGothicNeoR00", Font.PLAIN, 18));
+			txt_food[i].setFont(new Font("맑은 고딕", Font.PLAIN, 18));
 			txt_food[i].setBounds(166, 62+(i*120), 166, 25);
 			add(txt_food[i]);
 			
 			txt_price[i] = new JLabel(price[i]+"원");
-			txt_price[i].setFont(new Font("AppleSDGothicNeoR00", Font.PLAIN, 18));
+			txt_price[i].setFont(new Font("맑은 고딕", Font.PLAIN, 18));
 			txt_price[i].setBounds(166, 97+(i*120), 166, 25);
 			add(txt_price[i]);
 			
