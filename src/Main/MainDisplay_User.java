@@ -16,6 +16,9 @@ public class MainDisplay_User extends JFrame{
 	
 	private JTextField Txt_input_search;
 	
+	/**
+	 * 로그인 상태의 유/무를 파악하기 위한 상태값.
+	 */
 	public static int login_state = 0;
 	
 	public MainDisplay_User() {
@@ -65,7 +68,8 @@ public class MainDisplay_User extends JFrame{
 		Btn_search.setBounds(12, 135, 30, 30);
 		getContentPane().add(Btn_search);
 		/**
-		 * 검색 버튼을 클릭할 경우 검색 화면으로 넘어갑니다. 
+		 * 검색 버튼을 클릭할 경우 검색 화면으로 넘어갑니다.
+		 * 로그인을 하지 않고 검색을 하는 경우엔 오류 팝업창을 띄워 로그인을 먼저 하도록 유도한다. 
 		 */
 		Btn_search.addActionListener(new ActionListener() {
 			@Override
