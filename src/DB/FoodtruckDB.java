@@ -29,7 +29,6 @@ public class FoodtruckDB {
 	 */
 	public String[] get_shop_name(String shop_name) {
 		String name [] = new String[50];
-		name[0] = "1";
 		Statement stmt;
 		stmt = db.db_connect();
 		
@@ -116,7 +115,7 @@ public class FoodtruckDB {
 			ResultSet rs = stmt.executeQuery("select * from foodtrucktb where shopname='"+shop_name+"'");
 			rs.last();
 			row = rs.getRow();
-			//System.out.println("row : "+ row);
+			System.out.println("row : "+ row);
 		}
 		catch( SQLException e) {
 			System.out.println( "해당 가게 메뉴가 없습니다." + e);
@@ -215,24 +214,6 @@ public class FoodtruckDB {
 		
 		shop = dup_del(shop); //배열 중복 원소 제거 
 		return shop;	
-	}
-	
-	
-	
-	
-	//검색 결과를 배열에 저장하는 메소드 "get_search_res" 예시를 넣어놨습니다
-	// 확인 후 메인 함수는 삭제해도 됩니다 !
-	
-	public static void main(String args[]) {
-		FoodtruckDB fd = new FoodtruckDB();
-		String txt = "핫도그";
-		String [] shop = new String[fd.get_search_cnt(txt)];
-		shop = fd.get_search_res(txt);
-		
-		for(int i = 0 ; i<shop.length; i++) {
-			System.out.println("검색결과 "+(i+1)+": "+shop[i]);
-		}
-			
 	}
 	
 }
