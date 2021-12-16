@@ -1,9 +1,7 @@
 package Login;
 
 import javax.swing.*;
-
-import Main.MainDisplay_User;
-
+import Main.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -98,6 +96,7 @@ public class LoginDisplay extends JFrame {
 				if(login_success) {
 					setVisible(false);
 					System.out.println("로그인 성공!");
+					MainDisplay_User.login_state = 1;
 					new MainDisplay_User();
 				}
 				else {

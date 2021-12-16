@@ -14,7 +14,9 @@ import Search.*;
  */
 public class MainDisplay_User extends JFrame{
 	
-private JTextField Txt_input_search;
+	private JTextField Txt_input_search;
+	
+	public static int login_state = 0;
 	
 	public MainDisplay_User() {
 		setSize(360, 640);
@@ -69,8 +71,14 @@ private JTextField Txt_input_search;
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				setVisible(false);
-				new SearchDisplay();
+				if(login_state == 1) {
+					setVisible(false);
+					new SearchDisplay();
+				}
+				else {
+					JOptionPane errorlog = new JOptionPane();
+					JOptionPane.showMessageDialog(null, "로그인을 먼저 해주세요.", "접근 오류", JOptionPane.ERROR_MESSAGE);
+				}
 			}
 			
 		});
