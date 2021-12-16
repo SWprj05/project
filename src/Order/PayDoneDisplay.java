@@ -73,15 +73,15 @@ public class PayDoneDisplay extends JFrame{
 		else if(count > 1)
 			str = order + " ¿Ü " + String.valueOf(count - 1);
 		JLabel Txt_food = new JLabel(str);
-		Txt_food.setHorizontalAlignment(SwingConstants.CENTER);
+		Txt_food.setHorizontalAlignment(SwingConstants.LEFT);
 		Txt_food.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 14));
-		Txt_food.setBounds(36, 38, 128, 49);
+		Txt_food.setBounds(36, 38, 202, 49);
 		panel.add(Txt_food);
 		
 		JLabel Txt_price = new JLabel(total + "¿ø");
 		Txt_price.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 14));
-		Txt_price.setHorizontalAlignment(SwingConstants.CENTER);
-		Txt_price.setBounds(204, 45, 103, 42);
+		Txt_price.setHorizontalAlignment(SwingConstants.RIGHT);
+		Txt_price.setBounds(257, 41, 103, 42);
 		panel.add(Txt_price);
 		
 		
