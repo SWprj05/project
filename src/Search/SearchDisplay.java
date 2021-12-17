@@ -41,9 +41,10 @@ public class SearchDisplay extends JFrame {
 		
 		
 		/**
-		 * 검색 버튼 클릭시 검색 처리
-		 * 검색 결과 비어있는지 체크를 하고 만약 비어있는 경우 오류 팝업창을 띄운다.
-		 * 검색 결과가 있으면 결과에 해당하는 가게버튼을 띄운다.
+		 * 검색 버튼 클릭시 검색 처리를 한다.
+		 * 검색어가 비어있는지 체크를 하고 만약 비어있는 경우 오류 팝업창을 띄운다.
+		 * 검색어가 있는 경우 검색어를 가지고 DB에 조회를한다. 
+		 * 검색 결과가 있으면 결과에 해당하는 가게버튼을 띄우고 결과가 없으면 오류 팝업창을 띄운다.
 		 */
 		Btn_search.addActionListener(new ActionListener() {
 			@Override
@@ -51,42 +52,45 @@ public class SearchDisplay extends JFrame {
 				// TODO Auto-generated method stub
 				String txt = Txt_input_search.getText();
 				
-				SearchProcess obj = new SearchProcess();
-				String temp [];
-				
-				temp = obj.search_res(txt);
-				JPanel panel [] = new JPanel[temp.length];
-				JButton Btn_foodtruck [] = new JButton[temp.length];
-				
-				if(temp == null || temp.length == 0) {
+				if(txt.length() == 0) {
 					JOptionPane errorlog = new JOptionPane();
-					JOptionPane.showMessageDialog(null, "검색 결과가 없습니다.", "접근 오류", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "검색어가 없습니다..", "검색 오류", JOptionPane.ERROR_MESSAGE);
 				}
 				else {
-					for(int i = 0; i < temp.length; i++) {
-						panel[i] = new JPanel();
-						panel[i].setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-						panel[i].setBounds(-23, 102 + (i*120), 400, 400);
-						getContentPane().add(panel[i]);
+					SearchProcess obj = new SearchProcess();
+					String temp [];
+					
+					temp = obj.search_res(txt);
+
+					JButton Btn_foodtruck [] = new JButton[temp.length];
+					
+					if(temp == null || temp.length == 0) {
+						JOptionPane errorlog = new JOptionPane();
+						JOptionPane.showMessageDialog(null, "검색 결과가 없습니다.", "접근 오류", JOptionPane.ERROR_MESSAGE);
+					}
+					else {
+						for(int i = 0; i < temp.length; i++) {
 						
-						String temp_txt = temp[i];
-						
-						Btn_foodtruck[i] = new JButton(temp_txt);
-						Btn_foodtruck[i].setBounds(45, 10 + (i*120), 300, 80);
-						panel[i].add(Btn_foodtruck[i]);
-						panel[i].setLayout(null);
-						
-						Btn_foodtruck[i].addActionListener(new ActionListener() {
-							@Override
-							public void actionPerformed(ActionEvent e) {
-								// TODO Auto-generated method stub
-								setVisible(false);
-								new MenuDisplay(temp_txt);
-							}
+							String temp_txt = temp[i];
 							
-						});
+							Btn_foodtruck[i] = new JButton(temp_txt);
+							Btn_foodtruck[i].setFont(new Font("맑은 고딕", Font.BOLD, 14));
+							Btn_foodtruck[i].setBounds(20, 90 + (i*100), 300, 60);
+							getContentPane().add(Btn_foodtruck[i]);
+							
+							Btn_foodtruck[i].addActionListener(new ActionListener() {
+								@Override
+								public void actionPerformed(ActionEvent e) {
+									// TODO Auto-generated method stub
+									setVisible(false);
+									new MenuDisplay(temp_txt);
+								}
+								
+							});
+						}
 					}
 				}
+				
 				
 				
 			}
