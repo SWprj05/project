@@ -4,7 +4,7 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
 import javax.swing.border.*;
-import Login.LoginDisplay;
+import Login.*;
 import Search.*;
 
 /**
@@ -18,6 +18,8 @@ public class MainDisplay_User extends JFrame{
 	
 	/**
 	 * 로그인 상태의 유/무를 파악하기 위한 상태값.
+	 * 0 = 로그아웃
+	 * 1 = 로그인 
 	 */
 	public static int login_state = 0;
 	
@@ -42,12 +44,8 @@ public class MainDisplay_User extends JFrame{
 		 */
 		ImageIcon image_menubar = new ImageIcon("./Image/메뉴바.png");
 		JButton Btn_menubar = new JButton(image_menubar);
-		Btn_menubar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
-				new LoginDisplay();
-			};
-		});
+		Btn_menubar.addActionListener(new Menu_Action()); // 메뉴바 버튼 액션리스너 생성
+		
 		Btn_menubar.setBounds(12, 10, 50, 50);
 		getContentPane().add(Btn_menubar);
 		
@@ -67,6 +65,7 @@ public class MainDisplay_User extends JFrame{
 		JButton Btn_search = new JButton(image_search);
 		Btn_search.setBounds(12, 135, 30, 30);
 		getContentPane().add(Btn_search);
+		
 		/**
 		 * 검색 버튼을 클릭할 경우 검색 화면으로 넘어갑니다.
 		 * 로그인을 하지 않고 검색을 하는 경우엔 오류 팝업창을 띄워 로그인을 먼저 하도록 유도한다. 
@@ -137,7 +136,27 @@ public class MainDisplay_User extends JFrame{
 		panel2.add(Txt_cartlist);
 		
 	}
+	
+	/**
+	 * 메뉴바를 눌렀을 때 
+	 * login_state == 0 로그인 화면
+	 * login_state == 1 로그인 완료 화면 
+	 * @author Team5
+	 *
+	 */
+	class Menu_Action implements ActionListener{
+		public void actionPerformed(ActionEvent e) {
+			setVisible(false);
+			switch(login_state)
+			{
+			case 0: new LoginDisplay(); break;
+			case 1: new LoginSuccDisplay(); break;	
+			}
 
+			
+		}
+	}
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		new MainDisplay_User();
