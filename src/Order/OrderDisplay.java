@@ -31,6 +31,8 @@ public class OrderDisplay extends JFrame {
 	private JPanel panel_3;
 	
 	public OrderDisplay(String [] name, String [] price, int count) {	
+		
+		System.out.println("메뉴가 "+(count)+"개 주문 요청되었습니다.");
 		//선택된 메뉴이름 배열 초기화
 		for(int i = 0 ; i<count ; i++)
 		{
@@ -163,7 +165,7 @@ public class OrderDisplay extends JFrame {
 		
 		txt_ordersum = new JLabel("총 결제금액");
 		txt_ordersum.setFont(new Font("맑은 고딕", Font.PLAIN, 17));
-		txt_ordersum.setBounds(51, 378, 90, 15);
+		txt_ordersum.setBounds(51, 378, 113, 15);
 		c.add(txt_ordersum);
 
 		//주문 금액 총 합계 
@@ -200,5 +202,3 @@ class MyAction implements ActionListener
 	}
 	
 }
-
-
