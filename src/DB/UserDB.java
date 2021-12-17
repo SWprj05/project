@@ -6,6 +6,7 @@ import java.sql.Statement;
 
 /**
  * 사용자 정보가 담겨있는 DB에서 id와 pw를 검색하는 클래스 입니다.
+ * 사용자의 이름을 DB에서 얻어옵니다.
  * @author Team5
  *
  */
@@ -84,6 +85,29 @@ public class UserDB {
 		}
 		
 	}
-
+	
+	/**
+	 * 
+	 * @param input_id 입력한 id
+	 * @return 입력한 id에 맞는 사용자 이름을 리턴
+	 */
+	public String get_Name(String input_id) {
+		String name = "";
+		Statement stmt;
+		stmt = db.db_connect();
+		
+		try {
+			ResultSet rs = stmt.executeQuery("select * from usertb where id = '" + input_id + "'");
+			while(rs.next()) {
+				name = rs.getString("name");
+			}
+			
+			System.out.println("데이터 베이스에서 찾는 id의 name : " + name);
+		}
+		catch( SQLException e) {
+			System.out.println( "해당 ID가 없습니다." + e);
+		}
+		return name;
+	}
 
 }
