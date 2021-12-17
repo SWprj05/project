@@ -23,6 +23,9 @@ public class LoginDisplay extends JFrame {
 	 */
 	private JPasswordField Txt_input_pw;	
 	
+	public static String id, pw; //로그인 id, pw 
+	
+	
 	public LoginDisplay() {
 		setSize(360, 640);
 		setTitle("로그인 화면");
@@ -30,6 +33,7 @@ public class LoginDisplay extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(null);
 		
+	
 		/**
 		 * '로그인을 해주세요', 텍스트 라벨
 		 */
@@ -83,21 +87,22 @@ public class LoginDisplay extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				String id = Txt_input_id.getText();
-				String pw = Txt_input_pw.getText();
+				id = Txt_input_id.getText();
+				pw = Txt_input_pw.getText();
 				
 				LoginProcess obj = new LoginProcess();
 				boolean login_success = obj.login_check(id, pw);
 				
 				/**
-				 * 로그인이 성공한 경우 다시 홈화면을 띄운다.
+				 * 로그인이 성공한 경우 
+				 * login_state +=1 연산 후 다시 홈화면을 띄운다.
 				 * 실패한 경우엔 경고창을 띄운다.
 				 */
 				if(login_success) {
 					setVisible(false);
 					System.out.println("로그인 성공!");
 					MainDisplay_User.login_state = 1;
-					new MainDisplay_User();
+					new LoginSuccDisplay();
 				}
 				else {
 					JOptionPane errorlog = new JOptionPane();
@@ -125,5 +130,6 @@ public class LoginDisplay extends JFrame {
 		
 		
 	}
-	
+
 }
+
