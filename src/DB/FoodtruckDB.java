@@ -153,6 +153,8 @@ public class FoodtruckDB {
 	
 	/**
 	 * 배열의 원소가 null 인지 확인하는 메소드
+	 * @param arr 정리할 array
+	 * @return true/false
 	 */
 	public boolean empty(String [] arr)
 	{
