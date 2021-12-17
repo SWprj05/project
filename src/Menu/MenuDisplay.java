@@ -21,10 +21,11 @@ public class MenuDisplay extends JFrame {
 	JLabel txt_name ;
 	JLabel totalLabel;
 	JButton btn_cart, btn_order;
-	
+
 	JCheckBox [] cb = new JCheckBox[50]; //체크박스 
 	JLabel [] txt_food= new JLabel[50]; //메뉴명
 	JLabel [] txt_price = new JLabel[50]; //메뉴가격
+	JLabel [] image = new JLabel[50];  //메뉴 이미지
 	JPanel [] Line = new JPanel[50]; //구분선
 	
 	FoodtruckDB fd; //푸드트럭DB 객체
@@ -45,7 +46,8 @@ public class MenuDisplay extends JFrame {
 	 * 푸드트럭DB객체를 이용하여 해당 가게의 메뉴 개수만큼 
 	 * 체크박스, 메뉴이름, 메뉴 가격을 보여줌 
 	 */
-	public MenuDisplay(String shop_name) {	
+	public MenuDisplay(String shop_name) {
+		getContentPane().setBackground(Color.WHITE);	
 		fd = new FoodtruckDB();
 		
 		setTitle("메뉴판 화면");
@@ -56,7 +58,7 @@ public class MenuDisplay extends JFrame {
 		JPanel panel = new JPanel();
 		panel.setBackground(SystemColor.menu);
 		panel.setBounds(0, 0, 344, 36);
-		add(panel);
+		getContentPane().add(panel);
 		txt_name = new JLabel(shop_name); // 검색 결과 화면에서 클릭한 푸드트럭 가게 이름 가져오기 
 		panel.add(txt_name);
 		txt_name.setHorizontalAlignment(SwingConstants.CENTER);
@@ -83,24 +85,28 @@ public class MenuDisplay extends JFrame {
 			cb[i] = new JCheckBox("");
 			cb[i].setBackground(Color.WHITE);
 			cb[i].setBounds(40, 80+(i*120), 20, 20);
-			add(cb[i]);
+			getContentPane().add(cb[i]);
 			cb[i].addItemListener(listener);
 			
 			txt_food[i] = new JLabel(name[i]);
 			txt_food[i].setFont(new Font("맑은 고딕", Font.PLAIN, 18));
 			txt_food[i].setBounds(166, 62+(i*120), 166, 25);
-			add(txt_food[i]);
+			getContentPane().add(txt_food[i]);
 			
 			txt_price[i] = new JLabel(price[i]+"원");
 			txt_price[i].setFont(new Font("맑은 고딕", Font.PLAIN, 18));
 			txt_price[i].setBounds(166, 97+(i*120), 166, 25);
-			add(txt_price[i]);
+			getContentPane().add(txt_price[i]);
 			
 			Line[i] = new JPanel();
 			Line[i].setBackground(SystemColor.menu);
 			Line[i].setBounds(0, 152+(i*120), 344, 3);
-			add(Line[i]);
+			getContentPane().add(Line[i]);
 			
+			image[i] = new JLabel();
+			image[i].setIcon(new ImageIcon("./Image/이미지.jpg"));
+			image[i].setBounds(74, 52+(i*120), 80, 80);
+			getContentPane().add(image[i]);
 		}
 		
 		//totalLabel = new JLabel("total : " + total);
@@ -132,7 +138,7 @@ public class MenuDisplay extends JFrame {
 	/**
 	 * 장바구니 버튼 눌렀을 때 이벤트 처리하는 메소드로, 자신의 장바구니에 체크된 메뉴 이름, 가격 등이 저장된다.
 	 * (장바구니DB에 삽입)
-	 * @author youeng
+	 * @author Team5
 	 *
 	 */
 	class CartAction implements ActionListener
@@ -148,7 +154,7 @@ public class MenuDisplay extends JFrame {
 	
 	/**
 	 * 주문하기 버튼을 눌렀을 때 이벤트 처리하는 메소드로, 주문화면으로 전환된다. 
-	 * @author youeng
+	 * @author Team5
 	 *
 	 */
 	class OrderAction implements ActionListener
@@ -176,7 +182,7 @@ public class MenuDisplay extends JFrame {
 	/**
 	 * 체크박스 체크된 것들만 select_name, select_price 배열에 저장 
 	 * 체크박스 체크 취소될 경우, 각 배열에서 삭제 
-	 * @author youeng
+	 * @author Team5
 	 *
 	 */
 	class MyItemListener implements ItemListener{
@@ -192,8 +198,9 @@ public class MenuDisplay extends JFrame {
 						//total += Integer.parseInt(price[i]);
 						select_name[count] = name[i];
 						select_price[count] = price [i];
-						System.out.println(count+"번째 : "+ select_name[count]);
+						System.out.println(count+"번째 : "+ select_name[count]+ "선택");
 						count++;
+						System.out.println("(+1) 현재 선택 메뉴 개수 = "+count);
 					}
 					
 				}
@@ -205,27 +212,35 @@ public class MenuDisplay extends JFrame {
 					if(e.getItem() == cb[i])
 					{
 						//total -= Integer.parseInt(price[i]);
+						System.out.println(i+"번째 : "+ select_name[i]+"선택 해제");
 						for(int j=0 ; j<count ; j++)
-						{
+						{							
 							if(select_name[j].equals(name[i]) && select_price[j].equals(price[i]))
 							{
-								System.out.println(select_name[j]);
+								System.out.println("i = "+ i +" j = "+j);
 								for(int k = j ; k<count; k++ )
 								{
 									select_name[k]=select_name[k+1];
 									select_price[k]=select_price[k+1];
-									count--;
+	
 								}
+								count--;
+								
+								if(count == 0)
+								{
+									select_name[0] = null;
+									select_price[0] = null;
+								}
+								System.out.println("(-1) 현재 선택 메뉴 개수 = "+count);
 							}
 							
 						}
 					}
-				}
 
-			}
+				}
 			//totalLabel.setText("total : " + total);
+			}
 		}
 	}
 	
 }
-
