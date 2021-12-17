@@ -18,7 +18,7 @@ public class DBConnection {
 	Connection conn = null;
 	Statement stmt = null; 
 	
-	public  Statement db_connect() {
+	public Statement db_connect() {
 		try {
 			// 연결 생성
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -41,8 +41,7 @@ public class DBConnection {
 	/**
 	* 데이터베이스와의 연결 해제
 	*/
-
-	public  void db_close() { 
+	public void db_close() { 
 		try 
 		{
 			conn.close();
